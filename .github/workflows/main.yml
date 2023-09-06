@@ -27,9 +27,9 @@ jobs:
         with:
           manifest: ${{ github.workspace }}/TournamentAssistant/manifest.json
 
-      - name: Build
-        id: Build
-        run: dotnet build --configuration Release
+      - name: Build Plugin
+        id: BuildPlugin
+        run: dotnet build .\TournamentAssistant\TournamentAssistant.csproj --configuration Debug
 
       - name: GitStatus
         run: git status
@@ -37,19 +37,19 @@ jobs:
       - name: Echo Filename
         run: echo $BUILDTEXT \($ASSEMBLYNAME\)
         env:
-          BUILDTEXT: Filename=${{ steps.Build.outputs.filename }}
-          ASSEMBLYNAME: AssemblyName=${{ steps.Build.outputs.assemblyname }}
+          BUILDTEXT: Filename=${{ steps.BuildPlugin.outputs.filename }}
+          ASSEMBLYNAME: AssemblyName=${{ steps.BuildPlugin.outputs.assemblyname }}
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
-          name: ${{ steps.Build.outputs.filename }}
-          path: ${{ steps.Build.outputs.artifactpath }}
+          name: ${{ steps.BuildPlugin.outputs.filename }}
+          path: ${{ steps.BuildPlugin.outputs.artifactpath }}
 
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ./${{ steps.Build.outputs.filename }}.zip
+          files: ./${{ steps.BuildPlugin.outputs.filename }}.zip
         env:
           GITHUB_TOKEN: ${{ github.token }}
