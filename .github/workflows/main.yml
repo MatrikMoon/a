@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: |
-            4.7.x
+            4.7.2
             7.0.x
 
       - name: Initialize modding environment
