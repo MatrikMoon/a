@@ -27,6 +27,9 @@ jobs:
         with:
           manifest: ${{ github.workspace }}/TournamentAssistant/manifest.json
 
+      - name: Dotnet Restore
+        run: dotnet restore
+
       - name: Build Plugin
         id: BuildPlugin
         run: dotnet build .\TournamentAssistant\TournamentAssistant.csproj --configuration Debug
