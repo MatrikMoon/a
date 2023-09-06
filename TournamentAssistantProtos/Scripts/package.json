@@ -1,0 +1,8 @@
+{
+    "name": "tournament-assistant-protos",
+    "version": "1.0.0",
+    "description": "Contains proto definitions and tools to use with protoc",
+    "dependencies": {
+        "@protobuf-ts/plugin": "^2.8.0"
+    }
+}

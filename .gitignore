@@ -1,0 +1,8 @@
+*/bin/
+.vs/
+*/obj/
+packages/
+.idea/.idea.TournamentAssistant/.idea/
+.editorconfig
+*.user
+vagueNotes.txt

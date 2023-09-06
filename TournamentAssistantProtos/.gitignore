@@ -1,0 +1,5 @@
+node_modules/
+Scripts/package-lock.json
+Scripts/TS
+Scripts/JS
+*.cs

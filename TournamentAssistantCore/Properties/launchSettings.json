@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TournamentAssistantCore": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
