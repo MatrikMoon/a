@@ -60,10 +60,12 @@ jobs:
         uses: actions/download-artifact@v3
 
       - name: Where the hell is my artifact
-        run: ls ${{steps.download.outputs.download-path}}
+        run: |
+          ls ${{steps.download.outputs.download-path}}
+          ls ${{steps.download.outputs.download-path}}\artifact
 
       - name: Extract Artifacts
-        run: 7z x ${{steps.download.outputs.download-path}}\artifact.zip
+        run: 7z x ${{steps.download.outputs.download-path}}\artifact\artifact.zip
 
       - name: Release
         uses: softprops/action-gh-release@v1
