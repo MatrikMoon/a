@@ -59,20 +59,12 @@ jobs:
         id: download
         uses: actions/download-artifact@v3
 
-      - name: Where the hell is my artifact
-        run: |
-          ls ${{steps.download.outputs.download-path}}
-          ls ${{steps.download.outputs.download-path}}\artifact
-
-      - name: Extract Artifacts
-        run: 7z x ${{steps.download.outputs.download-path}}\artifact\artifact.zip
-
-      - name: Release
+      - name: Create Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            TournamentAssistant.dll
-            TournamentAssistantCore.exe
-            TournamentAssistantCore
+            ${{steps.download.outputs.download-path}}\artifact\TournamentAssistant.dll
+            ${{steps.download.outputs.download-path}}\artifact\TournamentAssistantCore.exe
+            ${{steps.download.outputs.download-path}}\artifact\TournamentAssistantCore
           token: ${{ github.token }}
