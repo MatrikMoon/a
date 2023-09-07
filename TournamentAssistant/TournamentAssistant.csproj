@@ -107,12 +107,6 @@
       <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Polyglot.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="protobuf-net, Version=3.0.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
-      <HintPath>..\packages\protobuf-net.3.1.0\lib\net461\protobuf-net.dll</HintPath>
-    </Reference>
-    <Reference Include="protobuf-net.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
-      <HintPath>..\packages\protobuf-net.Core.3.1.0\lib\net461\protobuf-net.Core.dll</HintPath>
-    </Reference>
     <Reference Include="SongCore, Version=3.9.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(BeatSaberDir)\Plugins\SongCore.dll</HintPath>
@@ -128,12 +122,6 @@
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Collections.Immutable.1.7.1\lib\net461\System.Collections.Immutable.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data">
       <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\System.Data.dll</HintPath>
       <Private>False</Private>
@@ -144,9 +132,6 @@
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http">
       <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\System.Net.Http.dll</HintPath>
       <Private>False</Private>
@@ -156,12 +141,6 @@
       <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\System.Numerics.dll</HintPath>
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml">
@@ -370,21 +349,21 @@
     <EmbeddedResource Include="Localization\ko.json" />
     <EmbeddedResource Include="Localization\jp.json" />
     <EmbeddedResource Include="Localization\fi.json" />
-    <None Include="packages.config" />
     <EmbeddedResource Include="UI\ViewControllers\PasswordEntry.bsml">
       <DependentUpon>PasswordEntry.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ILRepack.Lib.MSBuild">
+      <Version>2.1.18</Version>
+    </PackageReference>
+    <PackageReference Include="protobuf-net">
+      <Version>3.1.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
-  <Import Project="..\packages\ILRepack.Lib.MSBuild.2.1.18\build\ILRepack.Lib.MSBuild.targets" Condition="Exists('..\packages\ILRepack.Lib.MSBuild.2.1.18\build\ILRepack.Lib.MSBuild.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\ILRepack.Lib.MSBuild.2.1.18\build\ILRepack.Lib.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILRepack.Lib.MSBuild.2.1.18\build\ILRepack.Lib.MSBuild.targets'))" />
-  </Target>
 </Project>
