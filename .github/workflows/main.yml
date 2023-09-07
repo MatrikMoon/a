@@ -64,7 +64,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            ${{steps.download.outputs.download-path}}\artifact\TournamentAssistant.dll
-            ${{steps.download.outputs.download-path}}\artifact\TournamentAssistantCore.exe
-            ${{steps.download.outputs.download-path}}\artifact\TournamentAssistantCore
+            ${{steps.download.outputs.download-path}}/artifact/TournamentAssistant.dll
+            ${{steps.download.outputs.download-path}}/artifact/TournamentAssistantCore.exe
+            ${{steps.download.outputs.download-path}}/artifact/TournamentAssistantCore
           token: ${{ github.token }}
