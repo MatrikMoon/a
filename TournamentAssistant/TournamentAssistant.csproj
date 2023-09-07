@@ -87,42 +87,6 @@
       <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Steamworks.NET.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System">
-      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\System.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="System.Data">
-      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\System.Data.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="System.IO.Compression.FileSystem">
-      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\System.IO.Compression.FileSystem.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="System.Net.Http">
-      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\System.Net.Http.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="System.Numerics">
-      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\System.Numerics.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml">
-      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\System.Xml.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\System.Xml.Linq.dll</HintPath>
-      <Private>False</Private>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(BeatSaberDir)\Beat Saber_Data\Managed\Unity.TextMeshPro.dll</HintPath>
