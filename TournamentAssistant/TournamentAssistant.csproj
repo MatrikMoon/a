@@ -239,11 +239,17 @@
       <Version>2.1.18</Version>
     </PackageReference>
     <PackageReference Include="protobuf-net">
-      <Version>3.1.0</Version>
+      <Version>3.2.26</Version>
     </PackageReference>
+    <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <Target Name="CopyOutputToDestinationFolder" AfterTargets="ILRepack">
+    <Message Importance="High" Text="Copying $(TargetFileName) to $(BeatSaberDir)\Plugins\..." />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(BeatSaberDir)\Plugins\" />
+    <Message Importance="High" Text="Done!" />
+  </Target>
 </Project>
