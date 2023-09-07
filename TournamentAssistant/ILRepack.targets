@@ -6,15 +6,15 @@
             <DoILRepack>false</DoILRepack>
         </PropertyGroup>
         <ItemGroup>
-            <InputAssemblies Include="$(OutputPath)\$(AssemblyName).dll" />
-            <InputAssemblies Include="$(OutputPath)\TournamentAssistantShared.dll" />
-            <InputAssemblies Include="$(OutputPath)\protobuf-net.dll" />
-            <InputAssemblies Include="$(OutputPath)\protobuf-net.Core.dll" />
-            <InputAssemblies Include="$(OutputPath)\System.Memory.dll" />
-            <InputAssemblies Include="$(OutputPath)\System.Buffers.dll" />
-            <InputAssemblies Include="$(OutputPath)\System.Collections.Immutable.dll" />
-            <InputAssemblies Include="$(OutputPath)\System.Numerics.Vectors.dll" />
-            <InputAssemblies Include="$(OutputPath)\System.Runtime.CompilerServices.Unsafe.dll" />
+            <InputAssemblies Include="$(OutputPath)$(AssemblyName).dll" />
+            <InputAssemblies Include="$(OutputPath)TournamentAssistantShared.dll" />
+            <InputAssemblies Include="$(OutputPath)protobuf-net.dll" />
+            <InputAssemblies Include="$(OutputPath)protobuf-net.Core.dll" />
+            <InputAssemblies Include="$(OutputPath)System.Memory.dll" />
+            <InputAssemblies Include="$(OutputPath)System.Buffers.dll" />
+            <InputAssemblies Include="$(OutputPath)System.Collections.Immutable.dll" />
+            <InputAssemblies Include="$(OutputPath)System.Numerics.Vectors.dll" />
+            <InputAssemblies Include="$(OutputPath)System.Runtime.CompilerServices.Unsafe.dll" />
         </ItemGroup>
         <ILRepack
             Parallel="true"
@@ -22,8 +22,8 @@
             LibraryPath="$(BeatSaberDir)\Beat Saber_Data\Managed\;$(BeatSaberDir)\Beat Saber_Data\Libs\;$(BeatSaberDir)\Plugins\;$(OutputPath)\"
             TargetKind="Dll"
             Verbose="true"
-            LogFile="$(OutputPath)\log.txt"
-            OutputFile="$(OutputPath)\$(AssemblyName).dll"
+            LogFile="$(OutputPath)log.txt"
+            OutputFile="$(OutputPath)$(AssemblyName).dll"
         />
     </Target>
 </Project>
