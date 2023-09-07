@@ -28,29 +28,32 @@ jobs:
           manifest: ${{ github.workspace }}/TournamentAssistant/manifest.json
 
       - name: Build Plugin
-        id: BuildPlugin
         run: dotnet build .\TournamentAssistant\TournamentAssistant.csproj --configuration Release
 
-      - name: Build Server
-        id: BuildServer
-        run: dotnet build .\TournamentAssistantCore\TournamentAssistantCore.csproj --configuration Release
+      - name: Build Server for Windows
+        run: dotnet publish .\TournamentAssistantCore\TournamentAssistantCore.csproj /p:PublishProfile=TournamentAssistantCore\Properties\PublishProfiles\Windows.pubxml
 
-      - name: GitStatus
-        run: git status
+      - name: Build Server for Linux
+        run: dotnet publish .\TournamentAssistantCore\TournamentAssistantCore.csproj /p:PublishProfile=TournamentAssistantCore\Properties\PublishProfiles\Linux.pubxml
 
-      - name: Echo Filename
-        run: echo ${{ steps.BuildPlugin.outputs.filename }} ${{ steps.BuildPlugin.outputs.assemblyname }}
+      - name: Build Server for Docker
+        run: dotnet publish .\TournamentAssistantCore\TournamentAssistantCore.csproj /p:PublishProfile=TournamentAssistantCore\Properties\PublishProfiles\Docker.pubxml
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
-          name: ${{ steps.BuildPlugin.outputs.filename }}
-          path: ${{ steps.BuildPlugin.outputs.artifactpath }}
+          path: |
+            .\TournamentAssistant\bin\Release\netstandard2.1\TournamentAssistant.dll
+            .\TournamentAssistantCore\bin\Release\publish\windows\TournamentAssistantCore.exe
+            .\TournamentAssistantCore\bin\Release\publish\linux\TournamentAssistantCore
 
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ./${{ steps.BuildPlugin.outputs.filename }}.zip
+          files: |
+            .\TournamentAssistant\bin\Release\netstandard2.1\TournamentAssistant.dll
+            .\TournamentAssistantCore\bin\Release\publish\windows\TournamentAssistantCore.exe
+            .\TournamentAssistantCore\bin\Release\publish\linux\TournamentAssistantCore
         env:
           GITHUB_TOKEN: ${{ github.token }}
