@@ -27,12 +27,13 @@ jobs:
         with:
           manifest: ${{ github.workspace }}/TournamentAssistant/manifest.json
 
-      - name: Dotnet Restore
-        run: dotnet restore
-
       - name: Build Plugin
         id: BuildPlugin
-        run: dotnet build .\TournamentAssistant\TournamentAssistant.csproj --configuration Debug
+        run: dotnet build .\TournamentAssistant\TournamentAssistant.csproj --configuration Release
+
+      - name: Build Server
+        id: BuildServer
+        run: dotnet build .\TournamentAssistantCore\TournamentAssistantCore.csproj --configuration Release
 
       - name: GitStatus
         run: git status

@@ -78,6 +78,36 @@ namespace TournamentAssistantUI.UI
         }
 
         #region MessagingToolkit
+        public Bitmap WriteableBitmapToBitmap(WriteableBitmap writeableBitmap)
+        {
+            if (writeableBitmap == null)
+            {
+                return null;
+            }
+
+            var width = writeableBitmap.PixelWidth;
+            var height = writeableBitmap.PixelHeight;
+
+            var stride = width * ((writeableBitmap.Format.BitsPerPixel + 7) / 8);
+            var pixelData = new byte[height * stride];
+
+            writeableBitmap.CopyPixels(pixelData, stride, 0);
+
+            var bitmap = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+
+            var bitmapData = bitmap.LockBits(
+                new Rectangle(0, 0, width, height),
+                ImageLockMode.WriteOnly,
+                bitmap.PixelFormat);
+
+            var bitmapPtr = bitmapData.Scan0;
+            Marshal.Copy(pixelData, 0, bitmapPtr, pixelData.Length);
+
+            bitmap.UnlockBits(bitmapData);
+
+            return bitmap;
+        }
+
         private Result[] ReadQRLocationsFromScreen()
         {
             using (var bitmap = ReadPrimaryScreenBitmap())
@@ -89,7 +119,7 @@ namespace TournamentAssistantUI.UI
                 DeleteObject(hBitmap);
                 var writeableBitmap = new WriteableBitmap(bitmapSource);
 
-                Result[] ret = decoder.DecodeMultiple(writeableBitmap);
+                Result[] ret = decoder.DecodeMultiple(WriteableBitmapToBitmap(writeableBitmap));
                 Logger.Info("Done!");
                 return ret;
             }

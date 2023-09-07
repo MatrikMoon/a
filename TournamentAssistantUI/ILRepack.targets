@@ -1,0 +1,25 @@
+<!-- ILRepack -->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Target Name="ILRepacker" AfterTargets="Build">
+        <!-- Prevents default runner since this targets file takes its place -->
+        <PropertyGroup>
+            <DoILRepack>false</DoILRepack>
+        </PropertyGroup>
+        <ItemGroup>
+            <InputAssemblies Include="$(OutputPath)$(TargetName)$(TargetExt)"/>
+            <InputAssemblies Include="$(OutputPath)*.dll" Exclude="$(OutputPath)$(TargetName)$(TargetExt)"/>
+        </ItemGroup>
+        <ILRepack
+            Parallel="true"
+            InputAssemblies="@(InputAssemblies)"
+            LibraryPath="$(OutputPath)\"
+            TargetKind="Exe"
+            AllowDuplicateResources="true"
+            Union="true"
+            Verbose="true"
+            LogFile="$(OutputPath)\log.txt"
+            OutputFile="$(OutputPath)\$(AssemblyName)$(TargetExt)"
+        />
+    </Target>
+</Project>
+<!-- /ILRepack -->

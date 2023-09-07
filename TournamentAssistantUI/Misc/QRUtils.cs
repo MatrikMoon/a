@@ -46,7 +46,7 @@ namespace TournamentAssistantUI.Misc
                 DeleteObject(hBitmap);
                 var writeableBitmap = new WriteableBitmap(bitmapSource);
 
-                Result[] results = decoder.DecodeMultiple(writeableBitmap);
+                Result[] results = decoder.DecodeMultiple(WriteableBitmapToBitmap(writeableBitmap));
                 Logger.Info("Done!");
 
                 return results;
@@ -106,6 +106,36 @@ namespace TournamentAssistantUI.Misc
                     bitmap.SetPixel(x, y, matrix.Get(x, y) ? Color.Black : Color.White);
                 }
             }
+            return bitmap;
+        }
+
+        private static Bitmap WriteableBitmapToBitmap(WriteableBitmap writeableBitmap)
+        {
+            if (writeableBitmap == null)
+            {
+                return null;
+            }
+
+            var width = writeableBitmap.PixelWidth;
+            var height = writeableBitmap.PixelHeight;
+
+            var stride = width * ((writeableBitmap.Format.BitsPerPixel + 7) / 8);
+            var pixelData = new byte[height * stride];
+
+            writeableBitmap.CopyPixels(pixelData, stride, 0);
+
+            var bitmap = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+
+            var bitmapData = bitmap.LockBits(
+                new Rectangle(0, 0, width, height),
+                ImageLockMode.WriteOnly,
+                bitmap.PixelFormat);
+
+            var bitmapPtr = bitmapData.Scan0;
+            Marshal.Copy(pixelData, 0, bitmapPtr, pixelData.Length);
+
+            bitmap.UnlockBits(bitmapData);
+
             return bitmap;
         }
     }
