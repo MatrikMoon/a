@@ -7,12 +7,14 @@
   "name": "TournamentAssistant",
   "version": "0.0.0",
   "features": [],
-  "loadAfter": [ "ScoreSaber" ],
+  "loadAfter": [
+    "ScoreSaber"
+  ],
   "dependsOn": {
     "BS Utils": "^1.10.0",
     "BeatSaberMarkupLanguage": "^1.5.3",
     "BSIPA": "^4.1.6",
-    "SongCore": "^3.10.4",
-    "CustomNotes": "^2.6.1"
+    "SongCore": "^3.11.1",
+    "Custom Notes": "^2.6.1"
   }
 }
