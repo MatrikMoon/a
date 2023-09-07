@@ -53,8 +53,8 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            .\TournamentAssistant\bin\Release\netstandard2.1\TournamentAssistant.dll
-            .\TournamentAssistantCore\bin\Release\publish\windows\TournamentAssistantCore.exe
-            .\TournamentAssistantCore\bin\Release\publish\linux\TournamentAssistantCore
+            TournamentAssistant\bin\Release\netstandard2.1\TournamentAssistant.dll
+            TournamentAssistantCore\bin\Release\publish\windows\TournamentAssistantCore.exe
+            TournamentAssistantCore\bin\Release\publish\linux\TournamentAssistantCore
         env:
           GITHUB_TOKEN: ${{ github.token }}
