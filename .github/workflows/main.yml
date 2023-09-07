@@ -39,10 +39,7 @@ jobs:
         run: git status
 
       - name: Echo Filename
-        run: echo $BUILDTEXT \($ASSEMBLYNAME\)
-        env:
-          BUILDTEXT: Filename=${{ steps.BuildPlugin.outputs.filename }}
-          ASSEMBLYNAME: AssemblyName=${{ steps.BuildPlugin.outputs.assemblyname }}
+        run: echo ${{ steps.BuildPlugin.outputs.filename }} ${{ steps.BuildPlugin.outputs.assemblyname }}
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
