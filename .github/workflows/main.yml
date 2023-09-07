@@ -41,7 +41,7 @@ jobs:
       - name: Copy Outputs to Folder
         run: |
           mkdir Artifacts
-          cp .\TournamentAssistant\bin\Release\netstandard2.1\TournamentAssistant.dll .\Artifacts
+          cp .\TournamentAssistant\bin\Release\netstandard2.0\TournamentAssistant.dll .\Artifacts
           cp .\TournamentAssistantCore\bin\Release\publish\windows\TournamentAssistantCore.exe .\Artifacts
           cp .\TournamentAssistantCore\bin\Release\publish\linux\TournamentAssistantCore .\Artifacts
 
