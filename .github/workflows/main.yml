@@ -56,12 +56,11 @@ jobs:
     needs: Build
     steps:
       - name: Download Artifacts
+        id: download
         uses: actions/download-artifact@v3
-        with:
-          path: .
 
       - name: Extract Artifacts
-        run: 7z x artifact.zip
+        run: 7z x ${{steps.download.outputs.download-path}}\artifact.zip
 
       - name: Release
         uses: softprops/action-gh-release@v1
